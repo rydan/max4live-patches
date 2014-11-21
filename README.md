@@ -29,3 +29,22 @@ Different random voltage generator implementations (I like random!). Drunk versi
 Quadrature LFO. LFO with two outputs, where channel 2 is 90 degrees phase shifted from channel 1. Using this with a balanced audio interface (like MOTU) and insert cables, means you will get 0 and 180 degrees on the insert cable from channel 1, and 90 and 270 degrees on the cable from channel two, that is, full quadrature, using two outputs.
 
 Note! To use these plugins, at least together with MOTU interfaces, it’s important to use a TRS cable with the ring unconnected (tip-tip, sleve-sleve, ring not connected). Failing to do so might damage your audio interface, according to motu. This is the same as when using Volta.
+
+**Midi**
+Various midi effects. Most notably, clock gividers and the PitchFunctionGenerator sequencer
+
+*ES-4 ClockDivider*
+Clock divider intended for use with the ExpertSleepers Gate expander module for ES-4 (And ES-3, and ES-40)
+Midi note C1 is clock, and it will be output as C1 - G1, which is just what the gate expansion wants. If division is set to zero, that divider is disabled, and no gates (notes) will be generated. Gate length will be the same as the C1 used as clock input. Note C2 will act as reset (same as pressing the reset button)
+There's a button to instead change the divider to toggle mode. In toggle, after the desired number of pulses, the gate will turn on, and stay on until the desired number of pulses has passed again.
+
+*ES-4 RndClockDivider*
+Clock divider intended for use with the ExpertSleepers Gate expander module for ES-4 (And ES-3, and ES-40)
+Midi note C1 is clock, and it will be output as C1 - G1, which is just what the gate expansion wants. If division is set to zero, that divider is disabled, and no gates (notes) will be generated. Gate length will be the same as the C1 used as clock input. Note C2 will act as reset (same as pressing the reset button)
+There's a button to instead change the divider to random mode. In random mode, the Count knob will instead set the probability (in percent) for a gate being generated for a clock input.
+
+*MidiClockDivider*
+A more generic version of the ES-4 RndClockDivider. Each divider has the possibility to set not to trigger, and count (division). Like the  ES-4 RndClockDivider, each divider can be set to Count or Random modes.
+
+*PitchFunctionGenerator*
+The PitchFunctionGenerator is an eight "stage" sequencer. Each stage is like a step on a normal sequencer, that is, it will add/subtract an offset to the sent note number. However after playing it's note, it will navigate to a new stage, based on probability. For each stage, it's possible to set three potential steps to go to, combined with a "weight" to go there. The weight works like the weights in lives "Follow Actions". If two stages has the same weigth, it will navigate to each of them roughly half the time. If stage1 has navigation to stage 2 with weight 3 and stage 4 with weight 1, after playing it's note it will move to stage2 roughly 3/4 of the times, and to stage 4 roughly 1/4 of the times. Does not work well with polyphonic input, or overlapping midi notes...
