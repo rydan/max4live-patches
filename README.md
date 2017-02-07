@@ -48,3 +48,9 @@ A more generic version of the ES-4 RndClockDivider. Each divider has the possibi
 
 *PitchFunctionGenerator*
 The PitchFunctionGenerator is an eight "stage" sequencer. Each stage is like a step on a normal sequencer, that is, it will add/subtract an offset to the sent note number. However after playing it's note, it will navigate to a new stage, based on probability. For each stage, it's possible to set three potential steps to go to, combined with a "weight" to go there. The weight works like the weights in lives "Follow Actions". If two stages has the same weigth, it will navigate to each of them roughly half the time. If stage1 has navigation to stage 2 with weight 3 and stage 4 with weight 1, after playing it's note it will move to stage2 roughly 3/4 of the times, and to stage 4 roughly 1/4 of the times. Does not work well with polyphonic input, or overlapping midi notes...
+
+**Audio**
+Mostly different experiment patches, often buggy and strange...
+
+*EvenTap*
+17 (yes, 17, sorry) tap stereo delay, with a spacing parameter for the taps to either make time between taps increasingly longer (giving a "slowing down" feel) or increasingly shorter (giving an "accelerating" feel)
